@@ -29,12 +29,12 @@ git clone [https://github.com/yourusername/FinGuard.git](https://github.com/your
 cd FinGuard
 2. Create a Virtual Environment
 
-# Windows
+Windows
 python -m venv venv
 
 .\venv\Scripts\activate
 
-# Mac/Linux
+Mac/Linux
 python3 -m venv venv
 
 source venv/bin/activate
@@ -42,13 +42,13 @@ source venv/bin/activate
 3. Install Dependencies
 Note: This project is optimized for CPU usage to be lightweight.
 
-# Install PyTorch CPU first to avoid large downloads
+Install PyTorch CPU first to avoid large downloads
 pip install torch torchvision torchaudio --index-url [https://download.pytorch.org/whl/cpu](https://download.pytorch.org/whl/cpu)
 
-# Install remaining dependencies
+Install remaining dependencies
 pip install -r requirements.txt
 
-🏃‍♂️ Usage Guide
+## 🏃‍♂️ Usage Guide
 
 Step 1: Train the Model
 
@@ -74,7 +74,7 @@ streamlit run app/ui.py
 
 The UI will open in your browser at http://localhost:8501.
 
-🔍 How to Test
+## 🔍 How to Test
 
 Since the data is synthetic, you need to find a specific node ID that is part of a "Fraud Ring" to see the detection capabilities in action.
 
@@ -82,7 +82,7 @@ Run the helper script to find a target:
 
 Python
 
-# Run in python shell
+## Run in python shell
 import torch
 
 data = torch.load("models/graph_data.pt")
@@ -92,7 +92,7 @@ print((data.y == 1).nonzero(as_tuple=True)[0].tolist()[:5])
 Copy one of these IDs and paste it into the Target Account ID field in the Dashboard sidebar.
 
 
-🔮 Future Improvements
+## 🔮 Future Improvements
 Dockerization: Containerize API and UI for easier deployment.
 
 Explainability: Implement GNNExplainer to highlight exactly which edges contributed to the fraud score.
