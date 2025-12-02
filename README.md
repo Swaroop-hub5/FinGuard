@@ -38,6 +38,7 @@ python -m venv venv
 python3 -m venv venv
 
 source venv/bin/activate
+
 3. Install Dependencies
 Note: This project is optimized for CPU usage to be lightweight.
 
@@ -46,26 +47,35 @@ pip install torch torchvision torchaudio --index-url [https://download.pytorch.o
 
 # Install remaining dependencies
 pip install -r requirements.txt
+
 🏃‍♂️ Usage Guide
+
 Step 1: Train the Model
+
 Generate synthetic data and train the GraphSAGE model.
 
 python src/train.py
+
 Output: Saves gnn_model.pth and graph_data.pt to the models/ directory.
 
 Step 2: Start the Inference API
+
 Launch the backend server to handle prediction requests.
 
 uvicorn app.api:app --reload
+
 API will run at http://127.0.0.1:8000. 
 
 Step 3: Launch the Dashboard
+
 Open a new terminal and start the Analyst Workbench.
 
 streamlit run app/ui.py
+
 The UI will open in your browser at http://localhost:8501.
 
 🔍 How to Test
+
 Since the data is synthetic, you need to find a specific node ID that is part of a "Fraud Ring" to see the detection capabilities in action.
 
 Run the helper script to find a target:
@@ -74,10 +84,12 @@ Python
 
 # Run in python shell
 import torch
-data = torch.load("models/graph_data.pt")
-print((data.y == 1).nonzero(as_tuple=True)[0].tolist()[:5])
-Copy one of these IDs and paste it into the Target Account ID field in the Dashboard sidebar.
 
+data = torch.load("models/graph_data.pt")
+
+print((data.y == 1).nonzero(as_tuple=True)[0].tolist()[:5])
+
+Copy one of these IDs and paste it into the Target Account ID field in the Dashboard sidebar.
 
 
 🔮 Future Improvements
