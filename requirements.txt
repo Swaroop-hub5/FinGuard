@@ -1,0 +1,13 @@
+torch
+torch-geometric
+networkx
+faker
+pandas
+numpy
+scikit-learn
+fastapi
+uvicorn
+streamlit
+matplotlib
+plotly
+httpx
