@@ -28,12 +28,15 @@ It leverages **Graph Neural Networks (GraphSAGE)** to analyze the topology of tr
 git clone [https://github.com/yourusername/FinGuard.git](https://github.com/yourusername/FinGuard.git)
 cd FinGuard
 2. Create a Virtual Environment
+
 # Windows
 python -m venv venv
+
 .\venv\Scripts\activate
 
 # Mac/Linux
 python3 -m venv venv
+
 source venv/bin/activate
 3. Install Dependencies
 Note: This project is optimized for CPU usage to be lightweight.
@@ -54,7 +57,7 @@ Step 2: Start the Inference API
 Launch the backend server to handle prediction requests.
 
 uvicorn app.api:app --reload
-API will run at http://127.0.0.1:8000. Documentation available at /docs.
+API will run at http://127.0.0.1:8000. 
 
 Step 3: Launch the Dashboard
 Open a new terminal and start the Analyst Workbench.
@@ -82,4 +85,4 @@ Dockerization: Containerize API and UI for easier deployment.
 
 Explainability: Implement GNNExplainer to highlight exactly which edges contributed to the fraud score.
 
-Database Integration: Replace file-based loading with Neo4j or AWS Neptune.⚡ Installation & Setup
+Database Integration: Replace file-based loading with Neo4j or AWS Neptune.
