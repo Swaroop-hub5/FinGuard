@@ -47,7 +47,7 @@ def load_system():
     
     if os.path.exists(MODEL_PATH):
         # Apply the same fix for the model file
-        model.load_state_dict(torch.load(MODEL_PATH, map_location=device))
+        model.load_state_dict(torch.load(MODEL_PATH, map_location=device, weights_only=True))
     
     model.eval()
     
@@ -58,29 +58,29 @@ def load_system():
         risk_scores = probs[:, 1]
         
     return data, G, predictions, risk_scores
-'''
-@st.cache_resource
-def load_system():
-    if not os.path.exists(DATA_PATH): return None, None, None, None
+
+#@st.cache_resource
+#def load_system():
+#    if not os.path.exists(DATA_PATH): return None, None, None, None
     
-    data = torch.load(DATA_PATH)
-    G = to_networkx(data, to_undirected=False)
+ #   data = torch.load(DATA_PATH)
+  #  G = to_networkx(data, to_undirected=False)
     
-    device = torch.device('cpu')
-    model = FincrimeGNN(in_channels=3, hidden_channels=64, out_channels=2)
+   # device = torch.device('cpu')
+    #model = FincrimeGNN(in_channels=3, hidden_channels=64, out_channels=2)
     
-    if os.path.exists(MODEL_PATH):
-        model.load_state_dict(torch.load(MODEL_PATH, map_location=device))
+    #if os.path.exists(MODEL_PATH):
+     #   model.load_state_dict(torch.load(MODEL_PATH, map_location=device))
     
-    model.eval()
+    #model.eval()
     
-    with torch.no_grad():
-        logits = model(data.x, data.edge_index)
-        probs = torch.exp(logits)
-        predictions = probs.argmax(dim=1)
-        risk_scores = probs[:, 1]
+   # with torch.no_grad():
+    #    logits = model(data.x, data.edge_index)
+     #   probs = torch.exp(logits)
+      #  predictions = probs.argmax(dim=1)
+       # risk_scores = probs[:, 1]
         
-    return data, G, predictions, risk_scores'''
+   # return data, G, predictions, risk_scores
 
 def generate_narrative(risk_score, features, risky_neighbors, total_neighbors):
     """
