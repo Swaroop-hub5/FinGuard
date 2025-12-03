@@ -1,6 +1,9 @@
 # FinGuard: Graph Neural Network for Anti-Money Laundering (AML)
-[Live App](https://finguard-9houut2nbggrzhpbpcsdjz.streamlit.app/)
+
 ![Status](https://img.shields.io/badge/Status-Prototype-blue) ![Python](https://img.shields.io/badge/Python-3.9+-yellow) ![PyTorch](https://img.shields.io/badge/PyTorch-Geometric-red)
+
+[Live App Here](https://finguard-9houut2nbggrzhpbpcsdjz.streamlit.app/)
+
 
 📸 Screenshots
 ![Preview](Screenshot.png)
