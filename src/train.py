@@ -36,14 +36,25 @@ def train_model():
             print(f"Epoch {epoch:03d}, Loss: {loss:.4f}, Test Acc: {acc:.4f}")
 
     # 3. Save Artifacts
-    if not os.path.exists('../models'):
+    
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    MODEL_DIR = os.path.join(BASE_DIR, 'models')
+
+    if not os.path.exists(MODEL_DIR):
+        os.makedirs(MODEL_DIR)
+
+    torch.save(model.state_dict(), os.path.join(MODEL_DIR, 'gnn_model.pth'))
+    torch.save(data, os.path.join(MODEL_DIR, 'graph_data.pt'))
+    
+    
+    '''if not os.path.exists('../models'):
         os.makedirs('../models')
     
     torch.save(model.state_dict(), '../models/gnn_model.pth')
     
     # Save graph data for the UI to load
     torch.save(data, '../models/graph_data.pt')
-    print("Model and Data saved successfully.")
+    print("Model and Data saved successfully.")'''
 
 if __name__ == "__main__":
     train_model()

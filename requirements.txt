@@ -1,13 +1,10 @@
-torch
-torch-geometric
-networkx
-faker
+streamlit
 pandas
 numpy
-scikit-learn
-fastapi
-uvicorn
-streamlit
-matplotlib
+networkx
 plotly
-httpx
+faker
+# The specific order matters for some cloud builders, but this usually works:
+torch --index-url https://download.pytorch.org/whl/cpu
+torch-geometric
+scikit-learn
