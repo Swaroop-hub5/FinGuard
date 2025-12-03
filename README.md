@@ -2,7 +2,7 @@
 
 ![Status](https://img.shields.io/badge/Status-Prototype-blue) ![Python](https://img.shields.io/badge/Python-3.9+-yellow) ![PyTorch](https://img.shields.io/badge/PyTorch-Geometric-red)
 
-# [Live App Here](https://finguard-9houut2nbggrzhpbpcsdjz.streamlit.app/)
+## [Live App: Click Here](https://finguard-9houut2nbggrzhpbpcsdjz.streamlit.app/)
 
 
 📸 Screenshots
