@@ -30,15 +30,16 @@ st.markdown("""
 
 # --- CACHED LOADERS ---
 
+# In app/ui.py
+
 @st.cache_resource
 def load_system():
     if not os.path.exists(DATA_PATH): return None, None, None, None
     
-    # ---------------- FIX START ----------------
-    # Force map_location='cpu' to ensure cloud compatibility
-    # weights_only=False is required for loading full Data objects
-    data = torch.load(DATA_PATH, map_location=torch.device('cpu')) 
-    # ---------------- FIX END ------------------
+    # --- CRITICAL FIX HERE ---
+    # We MUST add weights_only=False because PyTorch 2.6+ blocks 
+    # complex objects (like Graph Data) by default.
+    data = torch.load(DATA_PATH, map_location=torch.device('cpu'), weights_only=False)
     
     G = to_networkx(data, to_undirected=False)
     
@@ -46,7 +47,8 @@ def load_system():
     model = FincrimeGNN(in_channels=3, hidden_channels=64, out_channels=2)
     
     if os.path.exists(MODEL_PATH):
-        # Apply the same fix for the model file
+        # We also add weights_only=True explicitly for the model weights
+        # (This is usually fine as True for state_dicts, but let's be explicit)
         model.load_state_dict(torch.load(MODEL_PATH, map_location=device, weights_only=True))
     
     model.eval()
