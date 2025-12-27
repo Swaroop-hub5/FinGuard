@@ -1,7 +1,15 @@
-venv
-
-__pycache__
-
-DS_Store
-
+# Python
+__pycache__/
+*.pyc
+venv/
 .env
+
+# Models & Data (Too big for Git)
+models/*.pth
+models/*.pt
+
+# Logs (Local only)
+logs/
+
+# OS
+.DS_Store

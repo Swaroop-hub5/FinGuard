@@ -8,3 +8,6 @@ faker
 torch --index-url https://download.pytorch.org/whl/cpu
 torch-geometric
 scikit-learn
+requests
+uvicorn
+fastapi

@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  gnn_api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    container_name: fincrime-api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./models:/app/models
+    networks:
+      - fincrime-net
+
+  gnn_dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile.ui
+    container_name: fincrime-ui
+    ports:
+      - "8501:8501"
+    environment:
+      - API_URL=http://gnn_api:8000
+    depends_on:
+      - gnn_api
+    volumes:
+      - ./models:/app/models
+      - ./logs:/app/logs      
+    networks:
+      - fincrime-net
+
+networks:
+  fincrime-net:
+    driver: bridge
